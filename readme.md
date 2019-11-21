@@ -8,5 +8,6 @@
 <pre><code>Create Database</code></pre>
 <pre><code>Change DB_DATABASE , DB_USERNAME , DB_PASSWORD in .env</code></pre>
 <pre><code><b>(Command)</b> php artisan db:seed</code></pre>
+<pre><code><b>(Command)</b> php artisan storage:link</code></pre>
 <pre><code><b>(Command)</b> php artisan serve</code></pre>
 

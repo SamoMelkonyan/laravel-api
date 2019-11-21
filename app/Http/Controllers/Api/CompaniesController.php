@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Http\Requests\CompaniesRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
@@ -63,10 +64,11 @@ class CompaniesController extends Controller
 
     public function update(CompaniesRequest $request, Company $company)
     {
+        $logo = $company->logo;
         if($request->file('logo') == null){
             $company->update($request->except('logo'));
         }else{
-            Storage::delete("public/$company->logo");
+            Storage::delete("public/$logo");
             $logo = $request
                 ->file('logo')
                 ->store('uploads', 'public');
@@ -77,6 +79,10 @@ class CompaniesController extends Controller
                     )
                 );
         }
+        return response()->json([
+            'success' => true,
+            'image' => $logo
+        ]);
 //        return  redirect()
 //            ->route('companies.index')
 //            ->with('success_message', 'The company has been successfully edited');
@@ -86,8 +92,11 @@ class CompaniesController extends Controller
     {
         Storage::delete("public/$company->logo");
         $company->delete();
-        return  redirect()
-            ->route('companies.index')
-            ->with('success_message', 'The company has been successfully removed');
+        return response()->json([
+            'success' => true,
+        ]);
+//        return  redirect()
+//            ->route('companies.index')
+//            ->with('success_message', 'The company has been successfully removed');
     }
 }
