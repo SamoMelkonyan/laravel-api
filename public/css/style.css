@@ -1,0 +1,48 @@
+.navbar-brand{
+    font-size: 2em;
+    padding: 0;
+}
+.companies-container .actions a , .companies-container .actions form button ,
+.employees-container .actions a , .employees-container .actions form button{
+    color: white;
+    font-size: 1.1em;
+    margin: 0 3px;
+    transition: 0.3s color;
+    text-decoration: none;
+}
+.companies-container .actions form ,
+.employees-container .actions form{
+    display: inline-block;
+}
+.companies-container .actions form button ,
+.employees-container .actions form button{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+.companies-container .actions a:hover , .companies-container .actions form button:hover ,
+.employees-container .actions a:hover , .employees-container .actions form button:hover{
+    color: #b2b2b2;
+}
+.companies-container table img{
+    height: 25px;
+}
+.company-edit-container img{
+    height: 35px;
+}
+.company-show-container img{
+    width: 100px;
+}
+.back-link{
+    font-size: 5em;
+    text-decoration: none;
+}
+.back-link i{
+    color: red;
+    transition: 0.3s color;
+}
+.back-link i:hover{
+    color: #b10000;
+}
