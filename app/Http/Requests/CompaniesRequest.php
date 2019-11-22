@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use http\Env\Request;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompaniesRequest extends FormRequest
