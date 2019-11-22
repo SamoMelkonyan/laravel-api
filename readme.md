@@ -1,7 +1,7 @@
-<h1>Laravel Test</h1>
+<h1>Laravel Api</h1>
 <h2>Getting Started</h2>
-<pre><code><b>(Command)</b> git clone https://github.com/SamoMelkonyan/laravel-test</code></pre>
-<pre><code><b>(Command)</b> cd laravel-test</code></pre>
+<pre><code><b>(Command)</b> git clone https://github.com/SamoMelkonyan/laravel-api</code></pre>
+<pre><code><b>(Command)</b> cd laravel-api</code></pre>
 <pre><code><b>(Command)</b> composer install</code></pre>
 <pre><code>Rename .env.example in .env</code></pre>
 <pre><code><b>(Command)</b> php artisan key:generate</code></pre>
