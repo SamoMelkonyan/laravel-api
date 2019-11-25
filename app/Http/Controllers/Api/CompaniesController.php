@@ -5,63 +5,58 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Http\Requests\CompaniesRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Class CompaniesController
+ * @package App\Http\Controllers\Api
+ */
 class CompaniesController extends Controller
 {
 
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
-
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index()
     {
         $companies = Company::latest()->paginate(10);
         return response()->json($companies);
-//        return view('companies.index', compact('companies'));
     }
 
-//    public function create()
-//    {
-//        return view('companies.create');
-//    }
-
+    /**
+     * @param CompaniesRequest $request
+     */
     public function store(CompaniesRequest $request)
     {
         $logo = null;
-
         if ($request->file('logo') != null) {
             $logo = $request
                 ->file('logo')
                 ->store('uploads', 'public');
         }
-
         Company::create(
             array_merge(
                 $request->except('logo'),
                 ['logo' => $logo]
             )
         );
-        return response()->json([
-            'success' => true,
-        ]);
-//        return  redirect()->route('companies.index')
-//            ->with('success_message', 'The company has been successfully added');
     }
 
+    /**
+     * @param Company $company
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show(Company $company)
     {
-    return response()->json($company);
-//        return view('companies.show', compact('company'));
+        return response()->json($company);
     }
 
-//    public function edit(Company $company)
-//    {
-//        return view('companies.edit', compact('company'));
-//    }
 
+    /**
+     * @param CompaniesRequest $request
+     * @param Company $company
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(CompaniesRequest $request, Company $company)
     {
         $logo = $company->logo;
@@ -80,23 +75,17 @@ class CompaniesController extends Controller
                 );
         }
         return response()->json([
-            'success' => true,
             'image' => $logo
         ]);
-//        return  redirect()
-//            ->route('companies.index')
-//            ->with('success_message', 'The company has been successfully edited');
     }
 
+    /**
+     * @param Company $company
+     * @throws \Exception
+     */
     public function destroy(Company $company)
     {
         Storage::delete("public/$company->logo");
         $company->delete();
-        return response()->json([
-            'success' => true,
-        ]);
-//        return  redirect()
-//            ->route('companies.index')
-//            ->with('success_message', 'The company has been successfully removed');
     }
 }

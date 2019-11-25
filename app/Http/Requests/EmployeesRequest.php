@@ -24,7 +24,7 @@ class EmployeesRequest extends FormRequest
     public function rules()
     {
         $id = null;
-        if($this->route('employee')) {
+        if(strtolower($this->method()) === 'put'){
             $id = $this->route('employee')->id;
         }
         return [

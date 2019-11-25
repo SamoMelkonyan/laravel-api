@@ -25,7 +25,7 @@ class CompaniesRequest extends FormRequest
     public function rules()
     {
         $id = null;
-        if($this->route('company')) {
+        if(strtolower($this->method()) === 'put'){
             $id = $this->route('company')->id;
         }
         return [
