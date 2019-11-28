@@ -22,6 +22,11 @@ class CompaniesController extends Controller
         $companies = Company::latest()->paginate(10);
         return response()->json($companies);
     }
+    public function all()
+    {
+        $companies = Company::latest()->get();
+        return response()->json($companies);
+    }
 
     /**
      * @param CompaniesRequest $request
@@ -40,6 +45,7 @@ class CompaniesController extends Controller
                 ['logo' => $logo]
             )
         );
+
     }
 
     /**

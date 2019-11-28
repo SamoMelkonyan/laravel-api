@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
-use App\Models\Company;
 use App\Http\Requests\EmployeesRequest;
 
 class EmployeesController extends Controller
@@ -21,11 +20,7 @@ class EmployeesController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
-    {
-        $companies = Company::latest()->get();
-        return response()->json($companies);
-    }
+
 
     /**
      * @param EmployeesRequest $request
