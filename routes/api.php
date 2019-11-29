@@ -7,6 +7,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::group(['middleware' => ['jwt.auth', 'api-header']], function () {
     Route::get('companies/all', 'Api\CompaniesController@all');
+    Route::get('employees/all', 'Api\EmployeesController@all');
     Route::resource('/companies', 'Api\CompaniesController', ['only' => ['index' , 'store', 'show', 'update', 'destroy']]);
     Route::resource('/employees', 'Api\EmployeesController', ['only' => ['index' , 'store', 'show', 'update', 'destroy']]);
     Route::post('me', 'Api\AuthController@me');

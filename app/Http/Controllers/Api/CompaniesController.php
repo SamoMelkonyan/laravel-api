@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Employee;
 use App\Http\Requests\CompaniesRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,7 +46,7 @@ class CompaniesController extends Controller
                 ['logo' => $logo]
             )
         );
-
+        return response()->json($request->all());
     }
 
     /**

@@ -16,6 +16,11 @@ class EmployeesController extends Controller
         $employees = Employee::latest()->paginate(10);
         return response()->json($employees);
     }
+    public function all()
+    {
+        $employees = Employee::latest()->get();
+        return response()->json($employees);
+    }
 
     /**
      * @return \Illuminate\Http\JsonResponse
